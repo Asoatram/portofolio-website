@@ -29,15 +29,15 @@ export default function HeroSection() {
             {/* Hero Content */}
             <div className="relative z-20 flex flex-col items-center justify-center min-h-screen text-center px-6">
                 <p className="text-gray-400 text-sm font-semibold tracking-wider uppercase">
-                    Full-Featured Web Services
+                    Expert Web Development Services
                 </p>
 
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight font-space-grotesk mb-6">
-                    Hi, I&apos;m Daffa.<br />
+                    Hi, I’m Daffa.<br />
                     <span className="block mt-2">
-                        I build&nbsp;
+                        I craft&nbsp;
                         <TextType
-                            text={["Digital Products", "Web Applications", "Creative Solutions"]}
+                            text={["Innovative Websites", "Scalable Apps", "User-Centric Designs"]}
                             typingSpeed={75}
                             pauseDuration={1500}
                             showCursor={true}
@@ -47,13 +47,15 @@ export default function HeroSection() {
                 </h1>
 
                 <p className="text-lg text-white/90 max-w-2xl leading-relaxed font-inter mb-8">
-                    I&apos;m a web developer focused on creating modern, responsive websites and web applications.
-                    I help businesses bring their ideas to life through clean code and intuitive user experiences.
+                    As a skilled web developer, I specialize in building fast, responsive, and modern web solutions.
+                    Let’s transform your vision into reality with clean code and seamless user experiences.
                 </p>
 
-                <button className="bg-white hover:cursor-pointer font-space-grotesk text-slate-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg">
-                    Contact
-                </button>
+                <div className="inline-block hover:scale-105 transition-transform duration-[250ms]">
+                    <button className="bg-white hover:cursor-pointer font-space-grotesk text-slate-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-[250ms] shadow-lg">
+                        Get in Touch
+                    </button>
+                </div>
             </div>
         </div>
     );

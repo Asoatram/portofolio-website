@@ -1,55 +1,73 @@
-'use client'
+'use client';
+
+import Image from 'next/image';
+
+const THEME = {
+    primaryGlow: '#3A29FF',
+    gradient: 'from-blue-400 via-cyan-400 to-sky-500',
+};
 
 export default function AboutMe() {
     return (
-        <section id="about" className="relative bg-black text-white py-20 overflow-hidden">
-            <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <section
+            id="about"
+            className="relative text-white py-20 overflow-hidden bg-black pb-20" // Adjusted for buffer
+            aria-labelledby="about-heading"
+        >
 
+
+            {/* Content */}
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
                 {/* Left Content - Text */}
                 <div className="space-y-6">
-                    <h2 className="text-4xl lg:text-5xl font-bold font-space-grotesk">
+                    <h2
+                        id="about-heading"
+                        className={`text-3xl sm:text-4xl lg:text-5xl font-bold font-space-grotesk
+                       bg-gradient-to-r ${THEME.gradient} bg-clip-text text-transparent`}
+                    >
                         About Me
                     </h2>
-
-                    <p className="text-lg text-gray-300 leading-relaxed font-inter">
-                        Hi, I&apos;m <span className="text-pink-400 font-semibold">Daffa</span>,
+                    <p className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter">
+                        Hi, I&apos;m <span className="text-blue-400 font-semibold">Daffa</span>,
                         a passionate web developer who loves building modern, responsive, and user-friendly web applications.
                         My focus is on crafting clean, maintainable code and delivering intuitive user experiences
                         that bring real value to businesses and users.
                     </p>
-
-                    <p className="text-lg text-gray-300 leading-relaxed font-inter">
+                    <p className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter">
                         I specialize in working with technologies like
                         <span className="text-blue-400"> React</span>,
-                        <span className="text-green-400"> Node.js</span>, and
-                        <span className="text-purple-400"> Next.js</span>,
-                        and I&apos;m always excited to learn new tools and frameworks to
-                        push my skills further.
+                        <span className="text-cyan-400"> Next.js</span>, and
+                        <span className="text-sky-400"> TypeScript</span>.
+                        I&apos;m always excited to explore new tools and frameworks
+                        to push my skills further.
                     </p>
-
                     <div className="flex gap-4 mt-6">
-                        <a href="#projects" className="px-6 py-3 bg-pink-500 hover:bg-pink-600 transition rounded-lg font-semibold shadow-md">
+                        <a
+                            href="#projects"
+                            className="px-6 py-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500
+                         hover:scale-105 transition rounded-lg font-semibold shadow-lg"
+                            aria-label="View Daffa's projects"
+                        >
                             View My Work
-                        </a>
-                        <a href="#contact" className="px-6 py-3 border border-gray-600 hover:border-pink-400 hover:text-pink-400 transition rounded-lg font-semibold">
-                            Contact Me
                         </a>
                     </div>
                 </div>
-
-                {/* Right Content - Image / Avatar */}
+                {/* Right Content - Avatar */}
                 <div className="flex justify-center lg:justify-end">
-                    <div className="relative w-64 h-64 rounded-2xl overflow-hidden shadow-xl border border-white/10">
-                        <img
+                    <div className="relative w-full max-w-[16rem] sm:max-w-[20rem] aspect-square rounded-2xl overflow-hidden shadow-xl border border-white/10">
+                        <Image
                             src="/me.png"
-                            alt="Portrait of Daffa, web developer"
-                            className="w-full h-full object-cover"
+                            alt="Portrait of Daffa, a web developer specializing in modern web technologies"
+                            fill
+                            sizes="(max-width: 640px) 100vw, 320px"
+                            className="object-cover"
+                            priority
                         />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-cyan-400/20 to-sky-400/20 mix-blend-overlay" />
                     </div>
                 </div>
             </div>
 
-            {/* Centered, less-wide Glassy Divider */}
         </section>
     );
 }
