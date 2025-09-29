@@ -5,7 +5,6 @@ import {
     SiReact,
     SiNextdotjs,
     SiTypescript,
-    SiTailwindcss,
     SiPython,
     SiFastapi,
     SiSpring,

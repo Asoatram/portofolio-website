@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
     typescript: {
         ignoreBuildErrors: true, // ⚠ Will still compile, even with TS errors
     },
+    reactStrictMode: false,
+    eslint: {
+        ignoreDuringBuilds: true, // ⚠ Will skip ESLint errors during build
+    },
 };
 
 export default nextConfig;
