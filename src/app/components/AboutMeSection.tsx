@@ -3,8 +3,9 @@
 import Image from 'next/image';
 
 const THEME = {
-    primaryGlow: '#3A29FF',
-    gradient: 'from-blue-400 via-cyan-400 to-sky-500',
+    primaryGlow: '#1E90FF',
+    secondaryGlow: '#20B2AA',
+    gradient: 'from-teal-400 via-blue-400 to-indigo-500',
 };
 
 export default function AboutMe() {
@@ -21,9 +22,9 @@ export default function AboutMe() {
                 {/* Left Content - Text */}
                 <div className="space-y-6">
                     <h2
-                        id="about-heading"
+                        id="about-me-heading"
                         className={`text-3xl sm:text-4xl lg:text-5xl font-bold font-space-grotesk
-                       bg-gradient-to-r ${THEME.gradient} bg-clip-text text-transparent`}
+                    bg-blue-400  bg-clip-text text-transparent`}
                     >
                         About Me
                     </h2>
@@ -44,8 +45,8 @@ export default function AboutMe() {
                     <div className="flex gap-4 mt-6">
                         <a
                             href="#projects"
-                            className="px-6 py-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500
-                         hover:scale-105 transition rounded-lg font-semibold shadow-lg"
+                            className={`px-6 py-3 bg-blue-500 hover:bg-blue-600
+                         hover:scale-105 transition rounded-lg font-semibold shadow-lg`}
                             aria-label="View Daffa's projects"
                         >
                             View My Work

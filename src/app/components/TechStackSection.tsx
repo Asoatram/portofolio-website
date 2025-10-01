@@ -10,6 +10,8 @@ import {
     SiSpring,
     SiDotnet,
     SiAndroid,
+    SiPostgresql,
+    SiMongodb,
 } from 'react-icons/si';
 import Particles from "@/components/Particles";
 
@@ -22,6 +24,8 @@ const techLogos = [
     { node: <SiAndroid />, title: 'Jetpack Compose', href: 'https://developer.android.com/jetpack/compose' },
     { node: <SiSpring />, title: 'Spring', href: 'https://spring.io' },
     { node: <SiDotnet />, title: '.NET', href: 'https://dotnet.microsoft.com' },
+    { node: <SiPostgresql />, title: 'PostgreSQL', href: 'https://postgresql.com' },
+    { node: <SiMongodb />, title: 'Mongodb', href: 'https://mongodb.com' },
 ];
 
 const THEME = {
@@ -34,7 +38,7 @@ export default function TechStack() {
     return (
         <section
             id="techstack"
-            className="relative bg-black text-white overflow-hidden py-20 pt-20" // Adjusted for buffer
+            className="relative bg-black text-white overflow-hidden py-20" // Adjusted for buffer
             aria-labelledby="techstack-heading"
         >
             {/* Background particles (stars) */}

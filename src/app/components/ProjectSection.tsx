@@ -1,154 +1,148 @@
-"use client"
-import React from 'react';
-import { motion } from 'framer-motion';
+"use client";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import TiltedCard from '@/components/TiltedCard';
 
-export interface CardProps{
-    title: string;
-    description: string;
-    technologies: string[];
-    image: string;
-    demoLink: string;
-    repoLink: string;
-}
-
-const projects: CardProps[] = [
+const projects = [
     {
-        title: "E-Commerce Platform",
-        description: "A full-stack e-commerce web app with user authentication, product filtering, and secure payments.",
-        technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-        image: "https://via.placeholder.com/400x200?text=Project+1",
-        demoLink: "https://example.com/demo1",
-        repoLink: "https://github.com/example/repo1",
+        imageSrc: "https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58",
+        altText: "Kendrick Lamar - GNX Album Cover",
+        captionText: "Kendrick Lamar - GNX",
+        containerHeight: "400px",
+        containerWidth: "300px",
+        imageHeight: "300px",
+        imageWidth: "300px",
+        rotateAmplitude: 12,
+        scaleOnHover: 1.2,
+        showMobileWarning: false,
+        showTooltip: true,
+        displayOverlayContent: true,
+        overlayContent: <p className="tilted-card-demo-text">Kendrick Lamar - GNX</p>,
     },
     {
-        title: "Task Management App",
-        description: "A productivity app for managing tasks with real-time collaboration and notifications.",
-        technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-        image: "https://via.placeholder.com/400x200?text=Project+2",
-        demoLink: "https://example.com/demo2",
-        repoLink: "https://github.com/example/repo2",
+        imageSrc: "https://i.scdn.co/image/ab67616d0000b273f3a4e7b5d9e8f2c1a7b3d4e5",
+        altText: "Drake - Certified Lover Boy Album Cover",
+        captionText: "Drake - Certified Lover Boy",
+        containerHeight: "300px",
+        containerWidth: "300px",
+        imageHeight: "300px",
+        imageWidth: "300px",
+        rotateAmplitude: 12,
+        scaleOnHover: 1.2,
+        showMobileWarning: false,
+        showTooltip: true,
+        displayOverlayContent: true,
+        overlayContent: <p className="tilted-card-demo-text" style={{ color: "#00FF7F" }}>Drake - Certified Lover Boy</p>,
     },
     {
-        title: "Portfolio Website",
-        description: "A personal portfolio showcasing projects with a modern, responsive design.",
-        technologies: ["React", "Tailwind CSS", "Vite"],
-        image: "https://via.placeholder.com/400x200?text=Project+3",
-        demoLink: "https://example.com/demo3",
-        repoLink: "https://github.com/example/repo3",
+        imageSrc: "https://i.scdn.co/image/ab67616d0000b273e6f2a3d4b7c9e1f5a8d2b3c4",
+        altText: "Taylor Swift - Evermore Album Cover",
+        captionText: "Taylor Swift - Evermore",
+        containerHeight: "300px",
+        containerWidth: "300px",
+        imageHeight: "300px",
+        imageWidth: "300px",
+        rotateAmplitude: 12,
+        scaleOnHover: 1.2,
+        showMobileWarning: false,
+        showTooltip: true,
+        displayOverlayContent: true,
+        overlayContent: <p className="tilted-card-demo-text" style={{ color: "#00FF7F" }}>Taylor Swift - Evermore</p>,
+    },
+    {
+        imageSrc: "https://i.scdn.co/image/ab67616d0000b273b1c2d3e4f5a6b7c8d9e0f1a2",
+        altText: "Beyoncé - Renaissance Album Cover",
+        captionText: "Beyoncé - Renaissance",
+        containerHeight: "300px",
+        containerWidth: "300px",
+        imageHeight: "300px",
+        imageWidth: "300px",
+        rotateAmplitude: 12,
+        scaleOnHover: 1.2,
+        showMobileWarning: false,
+        showTooltip: true,
+        displayOverlayContent: true,
+        overlayContent: <p className="tilted-card-demo-text" style={{ color: "#00FF7F" }}>Beyoncé - Renaissance</p>,
+    },
+    {
+        imageSrc: "https://i.scdn.co/image/ab67616d0000b273c3d4e5f6a7b8c9d0e1f2a3b4",
+        altText: "The Weeknd - Dawn FM Album Cover",
+        captionText: "The Weeknd - Dawn FM",
+        containerHeight: "300px",
+        containerWidth: "300px",
+        imageHeight: "300px",
+        imageWidth: "300px",
+        rotateAmplitude: 12,
+        scaleOnHover: 1.2,
+        showMobileWarning: false,
+        showTooltip: true,
+        displayOverlayContent: true,
+        overlayContent: <p className="tilted-card-demo-text" style={{ color: "#00FF7F" }}>The Weeknd - Dawn FM</p>,
     },
 ];
 
-// Animation variants for the project card
-const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-    hover: { scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)", transition: { duration: 0.3 } },
-};
-
-// Animation variants for the container
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.2, // Stagger each card's animation
-        },
-    },
-};
-
-const ProjectCard = ({ title, description, technologies, image, demoLink, repoLink }:CardProps) => {
-    return (
-        <motion.div
-            className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-md rounded-lg shadow-lg overflow-hidden border border-white/20"
-            style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
-            }}
-            variants={cardVariants}
-            whileHover="hover"
-            initial="hidden"
-            animate="visible"
-        >
-            <motion.img
-                src={image}
-                alt={title}
-                className="w-full h-48 object-cover"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-            />
-            <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-                <p className="text-gray-200 mb-4">{description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                    {technologies.map((tech, index) => (
-                        <motion.span
-                            key={index}
-                            className="px-3 py-1 bg-white/10 dark:bg-gray-700/10 text-white rounded-full text-sm"
-                            whileHover={{ scale: 1.1 }}
-                            transition={{ duration: 0.2 }}
-                        >
-                            {tech}
-                        </motion.span>
-                    ))}
-                </div>
-                <div className="flex gap-4">
-                    <motion.a
-                        href={demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-blue-600/80 text-white rounded hover:bg-blue-700/80"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        Live Demo
-                    </motion.a>
-                    <motion.a
-                        href={repoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-gray-600/50 text-white rounded hover:bg-gray-700/50"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        View Code
-                    </motion.a>
-                </div>
-            </div>
-        </motion.div>
-    );
+// Animation variants for the carousel items
+const itemVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    exit: { opacity: 0, x: -100, transition: { duration: 0.5, ease: "easeIn" } },
 };
 
 const Projects = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const itemsPerPage = 3;
+    const totalProjects = projects.length;
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % (totalProjects - itemsPerPage + 1));
+        }, 5000); // Auto-slide every 5 seconds
+        return () => clearInterval(interval);
+    }, [totalProjects]);
+
+    const visibleProjects = projects.slice(currentIndex, currentIndex + itemsPerPage);
+
     return (
-        <section className="py-16 bg-black">
-            <div className="container mx-auto px-4">
+        <section className="pt-20 bg-gradient-to-b from-black via-blue-950 to-black min-h-[80%]">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.h2
-                    className="text-3xl font-bold text-center text-white mb-12"
-                    initial={{ opacity: 0, y: -20 }}
+                    className={`text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-blue-400 mb-12 text-center`}
+                    initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     My Projects
                 </motion.h2>
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    {projects.map((project, index) => (
-                        <ProjectCard
-                            key={index}
-                            title={project.title}
-                            description={project.description}
-                            technologies={project.technologies}
-                            image={project.image}
-                            demoLink={project.demoLink}
-                            repoLink={project.repoLink}
-                        />
-                    ))}
-                </motion.div>
+                <div className="relative overflow-hidden">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentIndex}
+                            className="flex justify-center gap-6"
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                        >
+                            {visibleProjects.map((project, index) => (
+                                <TiltedCard
+                                    key={index}
+                                    imageSrc={project.imageSrc}
+                                    altText={project.altText}
+                                    captionText={project.captionText}
+                                    containerHeight={project.containerHeight}
+                                    containerWidth={project.containerWidth}
+                                    imageHeight={project.imageHeight}
+                                    imageWidth={project.imageWidth}
+                                    rotateAmplitude={project.rotateAmplitude}
+                                    scaleOnHover={project.scaleOnHover}
+                                    showMobileWarning={project.showMobileWarning}
+                                    showTooltip={project.showTooltip}
+                                    displayOverlayContent={project.displayOverlayContent}
+                                    overlayContent={project.overlayContent}
+                                />
+                            ))}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
             </div>
         </section>
     );

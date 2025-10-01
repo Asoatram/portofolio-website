@@ -2,6 +2,7 @@ import HeroSection from "@/app/components/HeroSection";
 import AboutMe from "@/app/components/AboutMeSection";
 import TechStack from "@/app/components/TechStackSection";
 import Projects from "@/app/components/ProjectSection";
+import ContactMe from "@/app/components/ContactMeSection";
 
 export default function DashboardPage(){
     return(
@@ -9,7 +10,8 @@ export default function DashboardPage(){
             <HeroSection/>
             <AboutMe/>
             <TechStack/>
-            <Projects />
+            {/*<Projects />*/}
+            <ContactMe/>
         </>
     )
 }
