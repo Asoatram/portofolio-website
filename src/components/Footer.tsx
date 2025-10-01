@@ -7,7 +7,7 @@ const Footer = () => {
                 </p>
                 <div className="mt-6 flex justify-start gap-8">
                     <a
-                        href="https://github.com/"
+                        href="https://github.com/Asoatram"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-white transition-colors"
@@ -15,7 +15,7 @@ const Footer = () => {
                         GitHub
                     </a>
                     <a
-                        href="https://linkedin.com/"
+                        href="www.linkedin.com/in/muhamad-daffa-azfa-rabbani-07274424b"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-white transition-colors"

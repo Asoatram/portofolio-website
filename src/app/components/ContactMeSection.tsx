@@ -23,7 +23,7 @@ export default function ContactMe() {
     };
 
     return (
-        <section className="bg-black flex items-center justify-center min-h-[60vh]">
+        <section id="contact" className="bg-black flex items-center justify-center min-h-[60vh]">
             <div className="container px-4 sm:px-6 lg:px-8">
                 <motion.h2
                     className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mb-12"
